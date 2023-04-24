@@ -1,0 +1,40 @@
+/* Library_stm32f405
+
+Version 
+001 
+    WSN专用版(   M_Y 2020.7.22 17:21   )
+	(STM32F40_41xxx,8MHz外部高速有源晶振,160MHz运行主频)
+	
+*/		   
+/* Library_stm32f405		    
+
+Cmsis     内核文件
+Driver    外设驱动
+
+*/
+/* Cmsis		   
+
+    外部高速有源晶振HSE为8M,
+  	STM32F407的系统时钟树: SYSCLK 160MHz , HCLK 160MHz , PCLK1 40MHz, PCLK2 80MHz , SDIO 40MHz 
+		                   PLLCLK 160MHz , AHB 160MHz  , APB1 40MHz,  APB2 80MHz   
+	
+system_stm32f4xx.c   中      精简 PLL Parameters
+system_stm32f4xx.c   中      参数 PLL_M             8
+system_stm32f4xx.c   中      参数 PLL_Q             7
+system_stm32f4xx.c   中      参数 PLL_N             320
+system_stm32f4xx.c   中      参数 PLL_P             2
+system_stm32f4xx.c   中      参数 SystemCoreClock   160000000
+system_stm32f4xx.c   中      精简 SetSysClock函数
+
+stm32f4xx.h          中      修改 HSE_VALUE 为8000000 需要配合system_stm32f4xx.c中时钟设定与硬件
+                             指令周期约为1.25/160MHz=7.8125ns
+
+*/
+/* Driver
+
+Driver               中      删除了stm32f4xx_fmc.c和stm32f4xx_fmc.h,疑似与fsmc冲突
+stm32f4xx_conf.h     中      精简Driver Includes
+stm32f4xx_it.c       32      注释了#include "main.h", 包含head_file.h
+stm32f4xx_it.c       144     注释了TimingDelay_Decrement(),未在此文件找到此函数
+
+*/

@@ -1,0 +1,28 @@
+/* System_freertos
+
+freertos_core				rtos内核代码
+freertos_include			内核头文件
+freertos_port_stm32f405		stm32f405移植接口
+
+*/
+
+/* freertos_core (前三个必要)
+
+tasks.c			所有任务相关函数
+list.c			一个双向链表，列表结构描述
+queue.c			队列，任务和任务之间的通讯处理
+
+croutine.c		多任务调度，实现可选的协同例程功能
+event_groups.c	事件标志组
+timer.c			软件定时器
+stream_buffer.c	
+
+*/
+
+/* freertos_port_stm32f405
+
+heap_4.c			内存管理
+port.c				硬件平台接口
+FreeRTOSConfig.h	RTOS配置
+
+*/
